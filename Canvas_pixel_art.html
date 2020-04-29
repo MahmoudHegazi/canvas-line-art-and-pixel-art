@@ -1,13 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <body>
 
 <input type="number" id="height" placeholder="enter canvas width">
 <input type="number" id="width" placeholder="enter canvas height">
-
+<input type="color" id="myColor">
 <button onclick="lineArt()">Run App</button>
+
 <br /><br />
-<canvas id="myCanvas" width="500" height="500"
+<canvas id="myCanvas"
 style="border:1px solid #d3d3d3;display:none">
 Your browser does not support the canvas element.
 </canvas>
@@ -15,12 +16,28 @@ Your browser does not support the canvas element.
 <script>
 
 function lineArt() {
-var cHeight = document.getElementById("height");
-var cWidth = document.getElementById("width");
+var Height = document.getElementById("height");
+var Width = document.getElementById("width");
+var color = document.getElementById("width");
+
+if (Height.value === "" && Width.value === "") {
+  alert("you Have to enter width and height then click run app");
+  return;
+}
+
+if (Height.value === "") {
+  alert("you Have to enter width and height then click run app");
+  return;
+}
+
+if (Width.value === "" ) {
+  alert("you Have to enter width and height then click run app");
+  return;
+}
 
 var canvas = document.getElementById("myCanvas");
-canvas.height = cHeight.value;
-canvas.width = cWidth.value;
+canvas.height = Height.value;
+canvas.width = Width.value;
 canvas.style.display = "block";
 
 var x = undefined;
@@ -29,7 +46,7 @@ canvas.addEventListener('click', function (event) {
    x = event.offsetX;
    y = event.offsetY;
    var ctx = canvas.getContext("2d");
-   ctx.fillStyle = "#FF0000";
+   ctx.fillStyle = color.value;
    ctx.fillRect(x,y,5,5);
 });
 
@@ -40,3 +57,4 @@ canvas.addEventListener('click', function (event) {
 
 </body>
 </html>
+
