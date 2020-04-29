@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+
+<input type="number" id="height" placeholder="enter canvas width">
+<input type="number" id="width" placeholder="enter canvas height">
+
+<button onclick="lineArt()">Run App</button>
+<br /><br />
+<canvas id="myCanvas" width="500" height="500"
+style="border:1px solid #d3d3d3;display:none">
+Your browser does not support the canvas element.
+</canvas>
+
+<script>
+
+function lineArt() {
+var cHeight = document.getElementById("height");
+var cWidth = document.getElementById("width");
+
+var canvas = document.getElementById("myCanvas");
+canvas.height = cHeight.value;
+canvas.width = cWidth.value;
+canvas.style.display = "block";
+
+var x = undefined;
+var y = undefined;
+canvas.addEventListener('click', function (event) {
+   x = event.offsetX;
+   y = event.offsetY;
+   var ctx = canvas.getContext("2d");
+   ctx.fillStyle = "#FF0000";
+   ctx.fillRect(x,y,5,5);
+});
+
+}
+
+
+</script>
+
+</body>
+</html>
